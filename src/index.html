@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>领取优惠</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+<div class="bg-white p-6 rounded-2xl shadow w-80">
+  <h2 class="text-xl font-bold mb-4">免费领取优惠</h2>
+
+  <input id="name" placeholder="姓名" class="w-full mb-2 p-2 border rounded" />
+  <input id="phone" placeholder="电话" class="w-full mb-2 p-2 border rounded" />
+  <input id="wechat" placeholder="微信号" class="w-full mb-4 p-2 border rounded" />
+
+  <button onclick="submitForm()" 
+    class="w-full bg-blue-500 text-white p-2 rounded">
+    立即领取
+  </button>
+</div>
+
+<script>
+const SUPABASE_URL = "https://kgxxlbixplptzscepdbt.supabase.co";
+const SUPABASE_KEY = "sb_publishable_o99FOcLnxPn5Mh3tuJ3H7Q_JEjQ6NpS";
+
+// ⚠️ 关键修复：避免重复声明
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+window.submitForm = async function () {
+
+  const { data, error } = await client
+    .from('leads')
+    .insert({
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value,
+      wechat: document.getElementById('wechat').value
+    });
+
+  if (error) {
+    console.error(error);
+    alert("提交失败：" + error.message);
+  } else {
+    alert("提交成功！");
+  }
+}
+</script>
+
+</body>
+</html>
