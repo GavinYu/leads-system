@@ -1,27 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>领取优惠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>免费领取50元代金券</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- supabase SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+<body class="min-h-screen bg-gradient-to-b from-amber-50 to-orange-50 flex items-center justify-center p-4">
 
-<div class="bg-white p-6 rounded-2xl shadow w-80">
-  <h2 class="text-xl font-bold mb-4">免费领取优惠</h2>
+<div class="bg-white w-full max-w-md rounded-2xl shadow-lg border border-orange-100 overflow-hidden">
+  <div class="bg-gradient-to-r from-orange-500 to-rose-500 px-6 py-5 text-white text-center">
+    <h1 class="text-xl font-bold leading-snug">🎉 免费领取50元代金券</h1>
+    <p class="mt-2 text-sm text-white/95">限前50名，每天仅开放20个名额</p>
+  </div>
 
-  <input id="name" placeholder="姓名" class="w-full mb-2 p-2 border rounded" />
-  <input id="phone" placeholder="电话" class="w-full mb-2 p-2 border rounded" />
-  <input id="wechat" placeholder="微信号" class="w-full mb-4 p-2 border rounded" />
+  <div class="p-6">
+    <p class="text-center text-gray-600 text-sm mb-5">👇 填写信息立即领取</p>
 
-  <button onclick="submitForm()" 
-    class="w-full bg-blue-500 text-white p-2 rounded">
-    立即领取
-  </button>
+    <div class="space-y-3">
+      <div>
+        <label for="name" class="block text-xs font-medium text-gray-500 mb-1">姓名</label>
+        <input id="name" type="text" autocomplete="name" placeholder="请输入姓名" class="w-full px-3 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none" />
+      </div>
+      <div>
+        <label for="phone" class="block text-xs font-medium text-gray-500 mb-1">电话</label>
+        <input id="phone" type="tel" autocomplete="tel" placeholder="请输入手机号" class="w-full px-3 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none" />
+      </div>
+      <div>
+        <label for="wechat" class="block text-xs font-medium text-gray-500 mb-1">微信</label>
+        <input id="wechat" type="text" autocomplete="off" placeholder="请输入微信号" class="w-full px-3 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none" />
+      </div>
+    </div>
+
+    <button type="button" onclick="submitForm()"
+      class="mt-5 w-full bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white font-semibold py-3 rounded-xl shadow-md transition">
+      立即领取优惠
+    </button>
+
+    <ul class="mt-6 space-y-2 text-sm text-gray-700">
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-600 shrink-0">✔</span>
+        <span>到店可直接使用</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-600 shrink-0">✔</span>
+        <span>无隐形消费</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-600 shrink-0">✔</span>
+        <span>支持堂食/外带</span>
+      </li>
+    </ul>
+
+    <p class="mt-5 text-center text-xs text-gray-500">已有132人领取</p>
+  </div>
 </div>
 
 <script>
